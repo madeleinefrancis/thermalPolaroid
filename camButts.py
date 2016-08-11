@@ -1,5 +1,5 @@
 
-import pygame, Buttons, os, numpy #,pyCam, print_image
+import pygame, Buttons, os, numpy, pyCam
 from PIL import Image, ImageOps, ImageEnhance
 from pygame.locals import *
 
@@ -11,7 +11,7 @@ class Button_Example:
 
         pygame.init()
 
-        image = 'capture.png'
+        image = 'capture.jpg'
 
         caption = os.path.dirname(os.path.realpath(__file__))
 
@@ -23,7 +23,7 @@ class Button_Example:
 
         self.bg = pygame.image.load(fullPath)
 
-        self.bg = self.grayscale(self.bg)
+        # self.bg = self.grayscale(self.bg)
 
         self.main()
 
@@ -175,7 +175,8 @@ class Button_Example:
     
     #Create a display
     def display(self):
-        self.screen = pygame.display.set_mode((650,370),0, 32)
+        
+        self.screen = pygame.display.set_mode((320,240),0, 32)
         self.size = self.screen.get_size()
         x, y = self.screen.get_size()
         pygame.display.set_caption(str(x) + " X " + str(y))
@@ -184,7 +185,7 @@ class Button_Example:
 
     #Update the display and show the button
     def update_display(self):
-        self.screen.fill((255,255,255))
+        
 
         x, y = self.screen.get_size()
 
@@ -259,7 +260,9 @@ class Button_Example:
 
                     elif self.ButtonRestore.pressed(pygame.mouse.get_pos()):
                          print "garbage"
-                         #pyCam.camstream()
+                         pygame.quit()
+                         pyCam.camstream()
+                         
 
                     elif self.ButtonPrint.pressed(pygame.mouse.get_pos()):
                         print "garbage"

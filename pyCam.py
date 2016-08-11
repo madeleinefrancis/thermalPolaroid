@@ -9,8 +9,8 @@ from pygame.locals import *
 from camButts import *
 
 DEVICE = '/dev/video0'
-SIZE = (640, 480)
-FILENAME = 'capture.png'
+SIZE = (320, 240)
+FILENAME = 'capture.jpg'
 
 def camstream():
     pygame.init()
@@ -27,8 +27,11 @@ def camstream():
         for event in pygame.event.get():
             if event.type == QUIT:
                 capture = False
-            elif event.type == KEYDOWN and event.key == K_s:
+            elif event.type == KEYDOWN:
                 im = pygame.image.save(screen, FILENAME)
+                camera.stop()
+                pygame.quit()
+                capture = False
                 Button_Example()
 
     camera.stop()

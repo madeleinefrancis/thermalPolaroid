@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from PIL import Image
-import sys, os
+import sys, os, pyCam
 from printer import ThermalPrinter
 
 def resizeimage (im):
@@ -44,6 +44,7 @@ def capture(image):
     w, h = i.size
     p.print_bitmap(data, w, h, True)
     p.linefeed(2)
+    pyCam.camstream()
 
 
 
